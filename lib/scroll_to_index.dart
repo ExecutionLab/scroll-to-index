@@ -437,7 +437,7 @@ mixin AutoScrollControllerMixin on ScrollController
 
   double _positionToAlignment(AutoScrollPosition position) {
     return position == AutoScrollPosition.begin
-        ? 0
+        ? 0.1
         : position == AutoScrollPosition.end
             ? 1
             : 0.5;
@@ -452,7 +452,7 @@ mixin AutoScrollControllerMixin on ScrollController
   /// return offset, which is a absolute offset to bring the target index object into the location(depends on [direction]) of viewport
   /// see also: _offsetYToRevealInViewport()
   double _directionalOffsetToRevealInViewport(int index, double alignment) {
-    assert(alignment == 0 || alignment == 0.5 || alignment == 1);
+    assert(alignment == 0.1 || alignment == 0.5 || alignment == 1);
     // 1.0 bottom, 0.5 center, 0.0 begin if list is vertically from begin to end
     final tagOffsetInViewport = _offsetToRevealInViewport(index, alignment);
 
@@ -462,7 +462,7 @@ mixin AutoScrollControllerMixin on ScrollController
       double absoluteOffsetToViewport = tagOffsetInViewport.offset;
       if (alignment == 0.5) {
         return absoluteOffsetToViewport;
-      } else if (alignment == 0) {
+      } else if (alignment == 0.1) {
         return absoluteOffsetToViewport - beginGetter(viewportBoundaryGetter());
       } else {
         return absoluteOffsetToViewport + endGetter(viewportBoundaryGetter());
